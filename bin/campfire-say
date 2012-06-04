@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'campfire-say'
+
+begin
+  if ARGV.size === 0
+    Campfire::Say.paste(STDIN.read)
+  else
+    Campfire::Say.say(ARGV.join(' '))
+  end
+rescue Campfire::Say::Error => error
+  puts [$0, error.message] * ': '
+  exit 1
+end
